@@ -1,0 +1,215 @@
+
+/* import de fuente */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    box-sizing: border-box; /* Esto es súper importante para que el padding no rompa los anchos */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f9; /* morado muy clarito de fondo */
+    padding-top: 80px; /* espacio arriba por el header fijo */
+    line-height: 1.6;
+}
+
+/* === HEADER FIJO Y NAV === */
+header {
+    position: fixed; /* fijo header */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #5d3f6a; /* morado oscuro para la barra */
+    color: white;
+    padding: 10px 30px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.4s ease; /* transición para el hover */
+    z-index: 1000;
+}
+
+header:hover {
+    background-color: #3b2841; 
+}
+
+header img {
+    height: 50px;
+    width: auto;
+    border-radius: 50%; /* bordes redondeados */
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #8c78a0; 
+}
+
+/* ~~~~ MIAN ~~~~ */
+main {
+    padding: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+#solar, #eolica, #hidraulica {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    margin: 30px 0;
+    position: relative; /* para los iconos con position absolute */
+    overflow: hidden; 
+}
+
+.container {
+    display: flex; 
+    gap: 30px;
+    align-items: center; 
+}
+
+.content {
+    flex: 2; /* texto debe tener más espacio que la img */
+}
+
+.image {
+    flex: 1; /* imagen menos espacio */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.image img {
+    width: 100%; 
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+/* titulos de las secciones */
+.content h2 {
+    color: #5d3f6a; 
+    margin-bottom: 15px;
+    border-bottom: 2px solid #8c78a0;
+    padding-bottom: 5px;
+}
+
+.card {
+    background-color: #f0e6f2; 
+    padding: 15px;
+    margin-top: 20px;
+    border-left: 5px solid #8c78a0; /* efecto de borde de cuadernito, lo saque de internet */
+    border-radius: 5px;
+}
+
+/* iconos */
+.floating-icon {
+    position: absolute; /* position absolute */
+    top: 10px;
+    right: 10px;
+    background-color: #8c78a0; 
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out; /* transicion para la animacion */
+    z-index: 10;
+}
+
+.floating-icon:hover {
+    transform: rotate(15deg) scale(1.2); /* animacion sacada de internet again */
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 15px;
+    background-color: #8c78a0;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* transicion para la animacion del boton */
+}
+
+.cta-button:hover {
+    background-color: #5d3f6a; 
+    transform: scale(1.05); /* tambien lo saque del internet */
+}
+
+
+/* ~~~~~ FOOTER ~~~~~ */
+footer {
+    background-color: #3b2841;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    font-size: 0.9em;
+}
+
+/* ~~~~ Media queries ~~~~*/
+@media (max-width: 900px) {
+    /* tablet */
+    .container {
+        flex-direction: column; /* bajo la img */
+    }
+
+    .image {
+        flex: none; 
+        width: 100%; /* ahora ocupa todo el ancho */
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* celular */
+    body {
+        padding-top: 140px; 
+    }
+    
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+        gap: 10px;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    nav {
+        width: 100%;
+        justify-content: space-around;
+        gap: 5px;
+    }
+    
+    nav a {
+        padding: 5px 10px;
+        font-size: 0.9em;
+    }
+    
+    main {
+        padding: 15px;
+    }
+    
+    #solar, #eolica, #hidraulica {
+        padding: 20px;
+    }
+}
