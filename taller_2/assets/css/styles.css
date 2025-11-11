@@ -97,7 +97,6 @@ main {
     flex: 1; /* imagen menos espacio */
     border-radius: 8px;
     overflow: hidden;
-    content: center ;
 }
 
 .image img {
