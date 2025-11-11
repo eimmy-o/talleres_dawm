@@ -61,6 +61,12 @@ nav a:hover {
 }
 
 /* ~~~~ MIAN ~~~~ */
+.sections {
+    display: flex;
+    gap: 30px; /* Espacio entre las tres columnas */
+    margin-bottom: 30px; /* Espacio debajo del bloque de secciones */
+}
+
 main {
     padding: 30px;
     max-width: 1400px;
@@ -91,11 +97,12 @@ main {
     flex: 1; /* imagen menos espacio */
     border-radius: 8px;
     overflow: hidden;
+    content: center ;
 }
 
 .image img {
     width: 100%; 
-    height: auto;
+    height: 10rem;
     display: block;
     border-radius: 8px;
 }
@@ -166,12 +173,11 @@ footer {
 /* ~~~~ Media queries ~~~~*/
 @media (max-width: 900px) {
     /* tablet */
-    .container {
-        flex-direction: column; /* bajo la img */
+    .sections {
+        flex-direction: column; /* bajo las secciones*/
     }
 
-    .image {
-        flex: none; 
+    .image { 
         width: 100%; /* ahora ocupa todo el ancho */
         margin-top: 20px;
     }
