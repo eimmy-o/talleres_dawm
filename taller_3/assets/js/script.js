@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         //valido que esten llenos los 2
         if(num_1_str.trim() == "" || num_2_str.trim() == ""){
-            //error
+            //to-do: error
         }
 
         const num_1 = parseFloat(DOMelement.num1.value);
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         //muestro resultado
         if(string){
-            //error
+            //to-do: error
         } else {
             DOMelement.resultadoCalculadora.textContent = result;
         }
@@ -43,19 +43,22 @@ document.addEventListener("DOMContentLoaded", function() {
         switch (operacion) {
             case "+":
                 return a+b ;
-            case "+":
+            case "-":
+                return a-b ;
+            case "*":
                 return a+b ;
-            case "+":
-                return a+b ;
-            case "+":
-                return a+b ;
+            case "/":
+                if(b == 0) {
+                    return "Error no se puede dividir para 0"
+                } else {
+                    return a/b
+                }
             default:
-                return "Error";
+                return "Error no se reconoce la operacion";
         }
     }
 
-    //funcion de eror
-    // later
+    //to-do: funcion de eror
 
     //form
 })
