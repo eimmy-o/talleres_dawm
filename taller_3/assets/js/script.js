@@ -17,9 +17,19 @@ document.addEventListener("DOMContentLoaded", function() {
         errorCorreo: document.getElementById("errorCorreo"),
         errorContrasena: document.getElementById("errorCotrasena"),
         registro: document.getElementById("form"),
+
+        //fechas
+        fecha1: document.querySelector("fecha1"),
+        fecha2: document.querySelector("fecha2"),
+        btn_calcular: document.getElementById("btn_cacular"),
+        resultadoFechas: document.getElementById("resultadoFechas"),
+        mensajeFechas: document.getElementById("fechasMensaje")
+
     };
 
     // ~~~~~ CALCULADORA ~~~~~
+
+    // clicks
     document.getElementById("sumar").addEventListener("click" , () => calcular("+"));
     document.getElementById("restar").addEventListener("click" , () => calcular("-"));
     document.getElementById("multiplicar").addEventListener("click" , () => calcular("*"));
@@ -76,6 +86,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // ~~~~~ FORMULARIO ~~~~~
+
+    //event
     DOMelement.registro.addEventListener("submit" , registrar);
 
     //funcion principal de registro
@@ -141,11 +153,39 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // ~~~~~ FECHAS ~~~~~
 
+    // click
+    DOMelement.btn_calcular.addEventListener("click" , manejarFechas);
 
+    //funcion principal de fechas
+    function manejarFechas(){
+        const fechaInicial = DOMelement.fecha1.value.trim() ;
+        const fechaFinal = DOMelement.fecha2.value.trim() ;
 
+        //validar que ambas estan llenas
+        if(!fechaInicial || !fechaFinal || fechaInicial === '' || fechaFinal === ''){
+            mostrarMensaje(DOMelement.mensajeFechas, "Error: debe llenar las 2 fechas" , "error");
+            return ;
+        }
 
+        const dias = calcularFechas(fechaInicial,fechaFinal);
 
+        if(isNaN(dias)){
+            mostrarMensaje(DOMelement.mensajeFechas, "Error al procesar las fechas" , "error");
+        } else {
+            DOMelement.resultadoFechas.textContent = dias.toString() ;
+            mostrarMensaje(DOMelement.mensajeFechas, "Calculo exitoso" , "success");
+        }
 
+    }
+
+    //funcion para calcualr la diferencia de las fechas
+    function calcularFechas(f1,f2){
+        const x = new Date(f1);
+        const y = new Date(f2);
+        const diff = x.getTime() - y.getTime();
+        const days = diff / (1000 * 60 * 60 * 24);
+        return days;
+    }
 
     //funcion para mostrar los mensajes en el form
     function mostrarMensaje(elemento, mensaje, tipo) {
