@@ -5,7 +5,18 @@ document.addEventListener("DOMContentLoaded", function() {
         num1: document.getElementById("num1"),
         num2: document.getElementById("num2"),
         resultadoCalculadora: document.getElementById("resultadoCalculadora"),
-        mensajeCalculadora: document.getElementById("mensajeCalcualdora")
+        mensajeCalculadora: document.getElementById("mensajeCalcualdora"),
+
+        //form
+        nombre: document.querySelector("nombre"),
+        correo: document.querySelector("correo"),
+        contrasena: document.querySelector("contrasena"),
+        fechaNacimiento: document.querySelector("fechaNacimiento"),
+        formMensaje: document.getElementById("formMensaje"),
+        errorNombre: document.getElementById("errorNombre"),
+        errorCorreo: document.getElementById("errorCorreo"),
+        errorContrasena: document.getElementById("errorCotrasena"),
+        registro: document.getElementById("form"),
     }
 
     //calcualdora
@@ -61,4 +72,17 @@ document.addEventListener("DOMContentLoaded", function() {
     //to-do: funcion de eror
 
     //form
+    DOMelement.registro.addEventListener("submit" , registrar);
+
+    //funcion principal de registro
+    function registrar(event) {
+        event.preventDefault(); //evitar envio por error
+
+        //validar campos 
+
+        //aqui debe ser dinamico
+
+        //continuo cuando se cargue la compu TT
+    }
+
 })

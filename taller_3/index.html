@@ -49,12 +49,40 @@
                     Resultado: 
                     <span id="resultadoCalculadora">0</span>
                 </h4>
-                <p id="mensajeCalcualdora"></p>
+                <p id="mensajeCalcualdora" class="error-msg"></p>
             </section>
             <hr>
 
             <section id="registro">
                 <h3>Formulario de Registro</h3>
+                <form id="form">
+                    <div class="pregunta">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" class="nombre" placeholder="Ingrese su nombre">
+                        <p id="errorNombre" class="error-msg"></p>
+                    </div>
+
+                    <div class="pregunta">
+                        <label for="correo">Correo:</label>
+                        <input type="email" class="correo" placeholder="Ingrese su correo">
+                        <p id="errorCorreo" class="error-msg"></p>
+                    </div>
+
+                    <div class="pregunta">
+                        <label for="contrasena">Contraseña:</label>
+                        <input type="password" class="contrasena" placeholder="Ingrese su contraseña">
+                        <p id="errorContrasena" class="error-msg"></p>
+                    </div>
+
+                    <div class="pregunta">
+                        <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                        <input type="date" class="fechaNacimiento">
+                    </div>
+
+                    <button type="submit">Registrar</button>
+
+                    <p id="formMensaje"></p>
+                </form>
             </section>
             <hr>
 
