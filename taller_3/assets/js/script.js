@@ -17,9 +17,9 @@ document.addEventListener("DOMContentLoaded", function() {
         errorCorreo: document.getElementById("errorCorreo"),
         errorContrasena: document.getElementById("errorCotrasena"),
         registro: document.getElementById("form"),
-    }
+    };
 
-    //calcualdora
+    // ~~~~~ CALCULADORA ~~~~~
     document.getElementById("sumar").addEventListener("click" , () => calcular("+"));
     document.getElementById("restar").addEventListener("click" , () => calcular("-"));
     document.getElementById("multiplicar").addEventListener("click" , () => calcular("*"));
@@ -32,7 +32,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         //valido que esten llenos los 2
         if(num_1_str.trim() == "" || num_2_str.trim() == ""){
-            //to-do: error
+            mostrarMensaje(DOMelement.mensajeCalculadora, "Error: debe ingresar ambos números", "error");
+            DOMelement.resultadoCalculadora.textContent = "---" ;
+            return;
         }
 
         const num_1 = parseFloat(DOMelement.num1.value);
@@ -42,9 +44,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const result = hacerOperacion(num_1 , num_2 , operacion);
 
         //muestro resultado
-        if(string){
-            //to-do: error
+        if(typeof result === "string"){
+            mostrarMensaje(DOMelement.mensajeCalculadora, result , "error");
+            DOMelement.resultadoCalculadora.textContent = "---" ;
+            return;
         } else {
+            mostrarMensaje(DOMelement.mensajeCalculadora, "Calculo hecho correctamente", "success");
             DOMelement.resultadoCalculadora.textContent = result;
         }
     }
@@ -60,29 +65,97 @@ document.addEventListener("DOMContentLoaded", function() {
                 return a+b ;
             case "/":
                 if(b == 0) {
-                    return "Error no se puede dividir para 0"
+                    return "Error no se puede dividir para 0";
                 } else {
-                    return a/b
+                    return a/b;
                 }
+                break;
             default:
                 return "Error no se reconoce la operacion";
         }
     }
 
-    //to-do: funcion de eror
-
-    //form
+    // ~~~~~ FORMULARIO ~~~~~
     DOMelement.registro.addEventListener("submit" , registrar);
 
     //funcion principal de registro
     function registrar(event) {
         event.preventDefault(); //evitar envio por error
 
-        //validar campos 
+        let formValido = true ;
 
-        //aqui debe ser dinamico
+        //validacion nombre
+        const errorNombre = validarCampo("nombre" , DOMelement.nombre.value);
+        mostrarMensaje(DOMelement.errorNombre, errorNombre, "error");
+        if (errorNombre) formulario = false ;
 
-        //continuo cuando se cargue la compu TT
+        //validacion correo
+        const errorCorreo = validarCampo("correo" , DOMelement.correo.value);
+        mostrarMensaje(DOMelement.errorNombre, errorCorreo, "error");
+        if (errorCorreo) formulario = false ;
+
+        //validacion contraseña
+        const errorContrasena = validarCampo("contrasena" , DOMelement.contrasena.value);
+        mostrarMensaje(DOMelement.errorNombre, errorContrasena, "error");
+        if (errorContrasena) formulario = false ;
+
+        if(formValido){
+            //exito general
+            mostrarMensaje(DOMelement.formMensaje, "Registro Exitoso" , "success");
+        } else {
+            //mal
+            mostrarMensaje(DOMelement.formMensaje, "Revisar que el form este lleno correctamente" , "error");
+        }
+
     }
 
-})
+    //key up ya mismo reviso eso
+
+    //funcion para validar los campos
+    function validarCampo(campoId , valor){
+        //campo vacio
+        if(valor.trim() === ''){
+            return "Este campo no puede estar vacio";
+        }
+
+        switch(campoId) {
+            case "nombre":
+                if(valor.length < 3) {
+                    return "El nombre debe tener al menos 3 caracteres" ;
+                }
+                break;
+            case "correo":
+                const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                if(!re.test(valor)){
+                    return "El formato del correo no es válido" ;
+                }
+                break;
+            case "contrasena":
+                if(valor.length < 6) {
+                    return "La contaseña debe tener minimo 6 caracteres" ;
+                }
+                break;
+        }
+        return ""; //nada sera exito
+    }
+
+    // ~~~~~ FECHAS ~~~~~
+
+
+
+
+
+
+
+    //funcion para mostrar los mensajes en el form
+    function mostrarMensaje(elemento, mensaje, tipo) {
+        if(tipo === "success"){
+            elemento.classList.add('success-msg');
+            elemento.classList.remove('error-msg');
+        } else {
+            elemento.classList.add('error-msg');
+            elemento.classList.remove('success-msg');
+        }
+    }
+
+});

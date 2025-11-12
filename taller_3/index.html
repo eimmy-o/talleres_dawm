@@ -3,14 +3,14 @@
 <html lang="es">
     <head>
         <!-- METADATOS -->
-         <meta charset="UTF-8">
-         <meta name="author" content="Eimmy Ochoa Morán">
-         <meta name="viewport" content="width=device-width , initial-scale=1.0">
+        <meta charset="UTF-8" />
+        <meta name="author" content="Eimmy Ochoa Morán" />
+        <meta name="viewport" content="width=device-width , initial-scale=1.0" />
 
-         <!-- TITULO e ICONO-->
-          <title>Taller #3 - JavaScript</title>
-          <link rel="icon" type="image/png" href="assets/imgs/logo_yo.png">
-          <link rel="stylesheet" href="assets/css/styles.css">
+        <!-- TITULO e ICONO-->
+        <title>Taller #3 - JavaScript</title>
+        <link rel="icon" type="image/png" href="assets/imgs/logo_yo.png" />
+        <link rel="stylesheet" href="assets/css/styles.css" />
     </head>
 
     <body>
@@ -19,7 +19,7 @@
             <a href="#registro">Registro |</a>
             <a href="#fechas">Fechas</a>
         </nav>
-        <hr>
+        <hr />
 
         <header>
             <!-- logo -->
@@ -27,16 +27,18 @@
                 <h1>Taller #3 - JavaScript</h1>
             </div>
         </header>
-        <hr>
+        <hr />
 
         <main>
             <section id="calculadora">
                 <h3>Calcualdora Simple</h3>
 
-                <input type="number" id="num1" placeholder="Ingrese el primer número">
-                <br> <br>
-                <input type="number" id="num2" placeholder="Ingrese el segundo número">
-                <br> <br>
+                <input type="number" id="num1" placeholder="Ingrese el primer número" />
+                <br />
+                <br />
+                <input type="number" id="num2" placeholder="Ingrese el segundo número" />
+                <br />
+                <br />
 
                 <div class="btn-holder">
                     <button id="sumar">+</button>
@@ -46,37 +48,37 @@
                 </div>
 
                 <h4>
-                    Resultado: 
+                    Resultado:
                     <span id="resultadoCalculadora">0</span>
                 </h4>
                 <p id="mensajeCalcualdora" class="error-msg"></p>
             </section>
-            <hr>
+            <hr />
 
             <section id="registro">
                 <h3>Formulario de Registro</h3>
                 <form id="form">
                     <div class="pregunta">
                         <label for="nombre">Nombre:</label>
-                        <input type="text" class="nombre" placeholder="Ingrese su nombre">
+                        <input type="text" class="nombre" placeholder="Ingrese su nombre" />
                         <p id="errorNombre" class="error-msg"></p>
                     </div>
 
                     <div class="pregunta">
                         <label for="correo">Correo:</label>
-                        <input type="email" class="correo" placeholder="Ingrese su correo">
+                        <input type="email" class="correo" placeholder="Ingrese su correo" />
                         <p id="errorCorreo" class="error-msg"></p>
                     </div>
 
                     <div class="pregunta">
                         <label for="contrasena">Contraseña:</label>
-                        <input type="password" class="contrasena" placeholder="Ingrese su contraseña">
+                        <input type="password" class="contrasena" placeholder="Ingrese su contraseña" />
                         <p id="errorContrasena" class="error-msg"></p>
                     </div>
 
                     <div class="pregunta">
                         <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-                        <input type="date" class="fechaNacimiento">
+                        <input type="date" class="fechaNacimiento" />
                     </div>
 
                     <button type="submit">Registrar</button>
@@ -84,20 +86,31 @@
                     <p id="formMensaje"></p>
                 </form>
             </section>
-            <hr>
+            <hr />
 
             <section id="fechas">
+                <h4>Diferencia entre 2 fechas</h4>
+                <div class="pregunta">
+                    <label for="fecha1">Fecha 1:</label>
+                    <input type="date" class="fecha1" />
+                </div>
+                <div class="pregunta">
+                    <label for="fecha2">Fecha 2:</label>
+                    <input type="date" class="fecha2" />
+                </div>
 
+                <button id="btn-calcular">Calcular Diferencia</button>
+
+                <p>Días de diferencia: <span id="resultadoFechas">---</span></p>
+
+                <p id="fechasMensaje"></p>
             </section>
         </main>
-        <hr>
+        <hr />
 
         <footer>
             <p>Desarrollado por Eimmy Ochoa - Copyright &copy; 2024</p>
             <p>Todos los derechos reservados.</p>
         </footer>
-
     </body>
-
-
 </html>
